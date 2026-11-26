@@ -1,0 +1,1567 @@
+# MASTER BUILD PROMPT: JEY LEARNING HUB — COMPLETE FUNCTIONAL ONLINE TUTORING PLATFORM
+
+Act as a senior full-stack software engineer, software architect, UI/UX designer, database engineer and QA engineer.
+
+Your task is to **design and build a complete, production-oriented online tutoring platform called Jey Learning Hub**.
+
+This is not a request for a static website, landing-page template, visual prototype or dashboard mockup. I want a real, working web application with a public website, authentication, database, teacher/admin dashboard, parent portal, student dashboard, class scheduling, video conferencing, lesson recordings, AI-generated lesson summaries, assignments, payments, notifications and reporting.
+
+**FUNCTIONALITY IS THE HIGHEST PRIORITY.**
+
+A beautiful interface with non-functional buttons, fake information, sample dashboards or simulated integrations is not acceptable. Every feature must either work or clearly indicate that it requires configuration. Never pretend an integration is connected when it is not.
+
+---
+
+# 1. BUSINESS AND BRAND INFORMATION
+
+**Business name:** Jey Learning Hub  
+**Founder and initial teacher:** Jecinta Maina  
+**Personal teaching identity:** Learn with Jecinta  
+**Tagline:** Learn. Create. Grow.
+
+Jey Learning Hub is an online tutoring business serving Kenyan and international learners.
+
+### Subjects offered
+
+1. Mathematics — Grades 1–8.
+2. Coding and Computer Science — ages 6–16.
+3. Science — Grades 1–8.
+
+The platform must support different curricula, age groups, learning levels and individual learning paths.
+
+### Initial operating model
+
+- Initially, Jecinta Maina is the only teacher and platform administrator.
+- Design the system to support additional teachers in the future.
+- Parents may register and manage one or multiple children.
+- Students should have their own secure accounts and learning dashboards.
+- The platform must support students and parents in different countries.
+- All class schedules must display in the user's local timezone.
+- Support KES, USD, GBP and EUR for pricing, invoices and payment records.
+
+### Design direction
+
+Create a professional, modern, premium educational brand.
+
+Use:
+- Navy blue as the primary colour.
+- Warm cream or off-white backgrounds.
+- Gold accents.
+- Subtle pastel colours for learning categories.
+- Clear typography.
+- Rounded cards and accessible controls.
+- Responsive layouts for desktop, tablet and mobile.
+
+The website should feel trustworthy to parents while being welcoming and engaging to children.
+
+Avoid an overly childish design, excessive animations, clutter, excessive text and unnecessary decorative elements.
+
+---
+
+# 2. TECHNOLOGY STACK
+
+Use a maintainable, modern stack.
+
+### Frontend
+- Next.js with App Router.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Reusable components.
+- Responsive design.
+
+### Backend and database
+- Supabase PostgreSQL.
+- Supabase Authentication.
+- Supabase Storage.
+- Supabase Row Level Security (RLS).
+- Secure server-side API routes or server actions.
+
+### Integrations
+- Zoom API for video meetings and cloud recording.
+- Google Calendar API and Google Meet as an alternative video provider.
+- Gemini API for AI lesson summaries.
+- Email service integration for transactional notifications.
+- Optional WhatsApp integration in a future phase.
+
+### Deployment
+- Vercel for hosting.
+- Supabase for backend services.
+
+Use environment variables for all credentials and secrets.
+
+Never expose private API keys, service-role keys, Zoom credentials or administrator secrets in frontend code.
+
+Use appropriate API versions and current official integration documentation. Do not invent endpoints or assume features are available without checking the provider's actual capabilities.
+
+---
+
+# 3. USER ROLES AND PERMISSIONS
+
+Implement proper authentication and role-based access control.
+
+There must be four supported roles:
+
+### A. Super Admin / Teacher
+
+Initially, Jecinta Maina will use this account.
+
+The administrator must have full control over:
+
+- Students.
+- Parents.
+- Teachers.
+- Courses.
+- Curriculum.
+- Bookings.
+- Calendar.
+- Classes.
+- Attendance.
+- Video meetings.
+- Recordings.
+- Lesson notes.
+- Assignments.
+- Payments.
+- Invoices.
+- Notifications.
+- Reports.
+- Website settings.
+- Integrations.
+
+Allow the administrator to manage their own teaching availability and working hours.
+
+### B. Parent
+
+A parent must be able to:
+
+- Register and log in.
+- Add one or multiple children.
+- Manage each child's profile.
+- View children's upcoming classes.
+- Book classes for their children.
+- View class schedules.
+- Join scheduled classes where permitted.
+- View published lesson notes.
+- Watch published lesson recordings.
+- View assignments and homework.
+- Track progress.
+- View teacher feedback.
+- View invoices and payment history.
+- Submit payment references and proof of payment.
+- Receive booking and class notifications.
+- Contact the teacher.
+
+A parent must only see their own children and associated records.
+
+### C. Student
+
+A student must have a dedicated dashboard.
+
+Students must be able to:
+
+- View their next class.
+- Join an upcoming or active class.
+- View their timetable.
+- See enrolled courses.
+- View completed lessons.
+- Access published lesson summaries.
+- Watch their own published recordings.
+- Download permitted learning materials.
+- View and complete assignments.
+- Submit homework.
+- See teacher feedback.
+- Track their learning progress.
+
+Students must not see other students' information, private teacher notes, payment administration or unpublished recordings.
+
+### D. Additional Teachers
+
+Although only one teacher will initially use the platform, design the database and permissions to support future teachers.
+
+Each teacher should eventually have:
+
+- A personal profile.
+- Assigned students.
+- Assigned courses.
+- A teaching calendar.
+- Availability settings.
+- Class records.
+- Attendance management.
+- Lesson notes and recordings.
+- Student progress records.
+
+The administrator should be able to assign students and classes to different teachers.
+
+---
+
+# 4. PUBLIC WEBSITE
+
+Build the following public pages.
+
+## A. Homepage
+
+The homepage must include:
+
+- Professional hero section.
+- Jey Learning Hub branding.
+- Clear introduction to the learning experience.
+- Mathematics, Coding and Science subject cards.
+- Why choose Jey Learning Hub?
+- Teaching approach.
+- How online lessons work.
+- Benefits for parents and students.
+- Testimonials section that can be managed from the admin dashboard.
+- Call-to-action buttons.
+- Contact information.
+- Footer with navigation and social links.
+
+Main actions:
+
+- Explore Courses.
+- View Curriculum.
+- Book a Lesson.
+- Contact Us.
+- Parent Login.
+
+Do not create fake testimonials. Allow the administrator to add genuine testimonials later.
+
+## B. About Page
+
+Include:
+
+- Founder and teacher introduction.
+- Jecinta Maina's teaching profile.
+- Qualifications and relevant teaching experience.
+- Teaching philosophy.
+- Approach to practical, interactive and personalised learning.
+
+Allow the administrator to update this content without editing source code.
+
+## C. Courses Page
+
+Display all available subjects.
+
+Each course must have:
+
+- Course title.
+- Subject.
+- Description.
+- Age or grade range.
+- Learning objectives.
+- Course duration.
+- Learning outcomes.
+- Curriculum.
+- Pricing.
+- Course status.
+- Booking action.
+
+Courses must be loaded from the database, not hardcoded into the frontend.
+
+## D. Curriculum Page
+
+Display a structured curriculum.
+
+Support:
+
+- Subject.
+- Grade or age group.
+- Learning level.
+- Modules.
+- Topics.
+- Lessons.
+- Learning objectives.
+- Skills covered.
+- Progression.
+
+The administrator must be able to create, edit, reorder, publish and archive curriculum content.
+
+## E. Pricing Page
+
+Display configurable pricing.
+
+Support:
+
+- Individual lessons.
+- Packages.
+- Recurring weekly lessons.
+- Trial or introductory lessons.
+- Different currencies.
+- Different prices for different courses.
+
+The administrator must be able to update prices from the dashboard.
+
+Do not hardcode prices throughout the application.
+
+## F. Booking Page
+
+This must be a fully functional booking system.
+
+A parent or student should be able to:
+
+1. Select a subject.
+2. Select a course or learning level.
+3. Select a teacher where applicable.
+4. Choose a lesson type.
+5. View actual available dates and times.
+6. Select a suitable time.
+7. Enter learner information.
+8. Provide parent contact details.
+9. Select their timezone.
+10. Review the booking.
+11. Submit the booking.
+
+After submission:
+
+- Create a real booking record in Supabase.
+- Generate a unique booking reference.
+- Display a confirmation page.
+- Send a notification if email integration is configured.
+- Show the booking in the administrator dashboard.
+- Show it in the appropriate calendar.
+- Apply the correct booking status.
+
+Booking statuses should include:
+
+- Pending.
+- Awaiting payment.
+- Confirmed.
+- Rescheduled.
+- Cancelled.
+- Completed.
+- No-show.
+
+Do not allow two students to book the same teacher's unavailable time.
+
+Implement server-side availability validation to prevent double booking, including simultaneous booking attempts.
+
+Allow the administrator to approve or reject bookings if manual approval is enabled.
+
+---
+
+# 5. TEACHER / ADMIN DASHBOARD
+
+This is one of the most important parts of the application.
+
+Build a secure dashboard with a sidebar and a functional main workspace.
+
+### Dashboard overview
+
+Display live database information:
+
+- Total students.
+- Active students.
+- Total parents.
+- Upcoming classes.
+- Classes completed.
+- Pending bookings.
+- Pending payments.
+- Outstanding balances.
+- Assignments awaiting review.
+
+Do not use hardcoded statistics.
+
+### Next class card
+
+Make the next scheduled class extremely visible.
+
+Show:
+
+- Student name.
+- Parent name where relevant.
+- Subject.
+- Course.
+- Lesson topic.
+- Date.
+- Time.
+- Student timezone.
+- Teacher timezone.
+- Video provider.
+- Booking status.
+- Payment status.
+
+Provide working actions:
+
+- Join Class.
+- View Details.
+- Reschedule.
+- Cancel.
+- Mark Attendance.
+- Complete Class.
+
+The Join Class button must open the actual meeting link associated with that specific class.
+
+### Upcoming classes
+
+Show the next five scheduled classes.
+
+Include filters for:
+
+- Date.
+- Student.
+- Subject.
+- Teacher.
+- Class status.
+
+### Admin sidebar
+
+Create functional navigation for:
+
+1. Overview.
+2. Calendar.
+3. Students.
+4. Parents.
+5. Teachers.
+6. Courses.
+7. Curriculum.
+8. Bookings.
+9. Classes.
+10. Lesson Notes.
+11. Recordings.
+12. Assignments.
+13. Submissions.
+14. Payments.
+15. Invoices.
+16. Messages.
+17. Notifications.
+18. Reports.
+19. Website Content.
+20. Integrations.
+21. Settings.
+
+Every menu item must open a working page. Do not create navigation items that lead to empty pages or dead ends.
+
+---
+
+# 6. COMPLETE CALENDAR AND CLASS MANAGEMENT
+
+Build a proper calendar system.
+
+Provide:
+
+- Day view.
+- Week view.
+- Month view.
+- List view.
+
+The administrator must be able to:
+
+- Create a class.
+- Edit a class.
+- Reschedule a class.
+- Cancel a class.
+- Mark attendance.
+- Mark a class as completed.
+- Add class descriptions.
+- Assign a student.
+- Assign a teacher.
+- Assign a course.
+- Add a lesson topic.
+- Add private teacher notes.
+- Add student-facing instructions.
+- Set class duration.
+- Set a recurring schedule.
+- View class history.
+
+### Availability management
+
+Allow the teacher to configure:
+
+- Available days.
+- Working hours.
+- Unavailable dates.
+- Break times.
+- Minimum booking notice.
+- Maximum booking period.
+- Lesson durations.
+- Buffer time between classes.
+
+The booking page must use this actual availability.
+
+### Timezone handling
+
+This is essential for international students.
+
+- Store class dates and times in UTC.
+- Store each user's timezone.
+- Display class times in the parent's or student's local timezone.
+- Display the teacher's local time in the admin dashboard.
+- Handle daylight saving time correctly.
+- Never assume all users are in Kenya.
+- Show the timezone beside important scheduled times.
+
+### Recurring lessons
+
+Allow recurring weekly lessons.
+
+For example, a student may have Mathematics every Tuesday and Thursday.
+
+Each occurrence must have its own class record, attendance, meeting details, lesson notes and recording.
+
+Rescheduling one class should not unintentionally change every other occurrence.
+
+---
+
+# 7. VIDEO CONFERENCING — ZOOM AND GOOGLE MEET
+
+This must be a real integration, not a placeholder link.
+
+Support both Zoom and Google Meet.
+
+The administrator should be able to select the preferred provider in Settings.
+
+## A. Zoom integration
+
+Use the official Zoom API.
+
+When a class is confirmed:
+
+1. Create a Zoom meeting for that class.
+2. Use a unique meeting for each class session.
+3. Save the meeting ID.
+4. Save the student-facing join URL.
+5. Store host URLs and sensitive meeting information securely.
+6. Associate the meeting with the exact class record.
+7. Display the Join Class button to authorised participants.
+
+Use an appropriate supported OAuth method, such as Server-to-Server OAuth where suitable.
+
+Never expose Zoom API secrets in the browser.
+
+Allow the administrator to:
+
+- Create a meeting.
+- View meeting details.
+- Update meeting details when supported.
+- Cancel the meeting when the class is cancelled.
+- Open the meeting.
+- View recording status.
+
+## B. Google Meet integration
+
+Allow Google Meet as an alternative.
+
+Use the official Google Calendar API to create calendar events with Google Meet conference details.
+
+Store the generated meeting link and associate it with the correct class.
+
+Do not simply generate a fake Meet URL.
+
+## C. Provider configuration
+
+Create an Integrations page where the administrator can:
+
+- Connect Zoom.
+- Configure Google Calendar and Meet.
+- Choose the default video provider.
+- Test integration connectivity.
+- See connection status.
+- View configuration instructions.
+- Disconnect an integration safely.
+
+If credentials are missing, display a clear setup message rather than pretending the provider works.
+
+## D. Meeting access
+
+The correct meeting link must appear in:
+
+- Teacher dashboard.
+- Student dashboard.
+- Parent dashboard where appropriate.
+- Class detail page.
+- Booking confirmation.
+- Class notification.
+
+A user must only access meetings for classes they are authorised to attend.
+
+---
+
+# 8. CLASS RECORDINGS
+
+Every class session should have its own recording record.
+
+This is a major feature.
+
+## Zoom recordings
+
+Where the Zoom account, plan and settings permit:
+
+- Enable cloud recording.
+- Retrieve recording information through the official Zoom API.
+- Use webhooks where appropriate to detect recording completion.
+- Retrieve available recording metadata.
+- Retrieve transcripts where available and authorised.
+- Associate the recording with the exact class ID.
+- Store recording metadata and secure references in the database.
+
+Do not assume every Zoom account supports cloud recording or transcription.
+
+## Google Meet recordings
+
+Where the relevant Google Workspace subscription, account settings and permissions permit:
+
+- Retrieve recording information through supported Google APIs.
+- Associate recordings with the correct class.
+- Store secure recording references.
+
+Do not claim that Meet recordings are available on every Google account.
+
+## Manual recording fallback
+
+Provide an administrator option to:
+
+- Upload a recording.
+- Add a secure recording link.
+- Add a transcript.
+- Associate the file with a specific class.
+- Publish or unpublish the recording.
+
+Use Supabase Storage or another secure storage solution where appropriate.
+
+### Recording management
+
+Each recording must have:
+
+- Class ID.
+- Student ID.
+- Subject.
+- Lesson date.
+- Recording URL or storage reference.
+- Recording duration where available.
+- Upload date.
+- Publication status.
+- Access permissions.
+
+Recording statuses:
+
+- Processing.
+- Available.
+- Awaiting review.
+- Published.
+- Unpublished.
+- Failed.
+
+The teacher must review a recording before publishing it.
+
+Students and parents must only access recordings they are authorised to view.
+
+Provide recording consent settings and appropriate parental consent for minors.
+
+---
+
+# 9. AI-POWERED LESSON SUMMARIES AND EDITABLE NOTES
+
+This should be one of the platform's most useful features.
+
+I want to reduce the time spent writing lesson notes after each class.
+
+Use Gemini API for AI-assisted lesson summaries.
+
+### Workflow
+
+After a lesson:
+
+1. Retrieve an available transcript from the video provider where supported.
+2. Allow the teacher to upload or paste a transcript if automatic retrieval is unavailable.
+3. Send the transcript and relevant class details to Gemini.
+4. Generate a structured lesson summary.
+5. Save it as an unpublished draft.
+6. Open the draft in the teacher's notes editor.
+7. Allow the teacher to edit, correct and approve it.
+8. Publish the final notes to the student and parent dashboards.
+
+Never publish AI-generated notes automatically.
+
+### AI summary structure
+
+Generate:
+
+- Lesson title.
+- Date.
+- Subject.
+- Grade or learning level.
+- Topic covered.
+- Learning objectives.
+- Concepts introduced.
+- Key explanations.
+- Examples worked through.
+- Activities completed.
+- Student participation.
+- Areas understood well.
+- Areas requiring more practice.
+- Mistakes or misconceptions addressed.
+- Homework or practice recommendations.
+- Suggested next lesson.
+
+The summary should be clear, age-appropriate and useful to parents.
+
+### Teacher notes editor
+
+Build a proper editor that supports:
+
+- Headings.
+- Paragraphs.
+- Bullet points.
+- Numbered lists.
+- Mathematical expressions.
+- Tables.
+- Images.
+- Links.
+- Attachments.
+- Homework instructions.
+
+Allow the teacher to:
+
+- Edit AI-generated notes.
+- Write notes manually.
+- Save drafts.
+- Preview notes.
+- Publish notes.
+- Unpublish notes.
+- Update previously published notes.
+- View revision history.
+
+Keep private teacher observations separate from student-facing notes.
+
+### AI integration requirements
+
+- Store the Gemini API key securely.
+- Use server-side API calls.
+- Handle missing transcripts.
+- Handle API errors.
+- Provide a manual notes option.
+- Display when content was AI-generated.
+- Never invent lesson details that are not supported by the transcript or teacher input.
+
+---
+
+# 10. STUDENT DASHBOARD
+
+Create a clean, simple dashboard suitable for children.
+
+The most important feature is showing the student's next class.
+
+### Student dashboard homepage
+
+Display:
+
+- Welcome message.
+- Next class.
+- Subject.
+- Lesson topic.
+- Date and time.
+- Countdown where appropriate.
+- Join Class button.
+- Enrolled courses.
+- Learning progress.
+- Recent lesson notes.
+- Available recordings.
+- Upcoming assignments.
+- Recent teacher feedback.
+
+### Next class functionality
+
+If the class is upcoming:
+
+- Display the correct date and time.
+- Show a Join Class button when joining is permitted.
+- Open the actual meeting link.
+
+If the class is in progress:
+
+- Show the active class.
+- Display Join Class.
+
+If the class is completed:
+
+- Replace Join Class with Review Lesson.
+
+The Review Lesson action must open the exact lesson page.
+
+### Individual lesson review page
+
+Every completed class should have a dedicated page showing:
+
+- Lesson title.
+- Date.
+- Subject.
+- Topic.
+- Teacher.
+- Published lesson summary.
+- Recording player or secure recording link.
+- Homework.
+- Learning resources.
+- Teacher feedback.
+
+Do not show another student's recordings, notes or assignments.
+
+### Course progress
+
+Show:
+
+- Course name.
+- Completed lessons.
+- Total lessons.
+- Progress percentage.
+- Current module.
+- Upcoming topics.
+
+Progress must be calculated from actual course and lesson records.
+
+---
+
+# 11. PARENT DASHBOARD
+
+Parents should have a complete overview of their children's learning.
+
+Support multiple children under one parent account.
+
+For each child, show:
+
+- Profile.
+- Enrolled courses.
+- Upcoming lessons.
+- Weekly timetable.
+- Completed lessons.
+- Published notes.
+- Available recordings.
+- Homework.
+- Assignment submissions.
+- Teacher feedback.
+- Progress.
+- Payments.
+- Outstanding balances.
+
+Parents should be able to switch between their children without logging out.
+
+### Parent communication
+
+Provide a messaging or enquiry area.
+
+Parents should be able to:
+
+- Send a message to the teacher.
+- Ask about a lesson.
+- Request a reschedule.
+- Request additional classes.
+- Raise a payment query.
+
+The teacher should be able to view and respond from the admin dashboard.
+
+---
+
+# 12. ASSIGNMENTS AND LEARNING RESOURCES
+
+Build a complete assignment system.
+
+The teacher must be able to:
+
+- Create assignments.
+- Assign them to one student or a group.
+- Link assignments to a course or class.
+- Add instructions.
+- Set due dates.
+- Attach files.
+- Add links.
+- Add questions.
+- Set maximum marks.
+- Publish assignments.
+
+Students must be able to:
+
+- View assignments.
+- Read instructions.
+- Download attachments.
+- Submit written answers.
+- Upload files.
+- Submit links.
+- View submission status.
+
+Teachers must be able to:
+
+- Review submissions.
+- Give marks.
+- Add comments.
+- Request corrections.
+- Mark assignments as reviewed.
+- Return feedback.
+
+Assignment statuses:
+
+- Draft.
+- Published.
+- In progress.
+- Submitted.
+- Late.
+- Reviewed.
+
+Create a learning resources library where teachers can upload worksheets, PDFs, presentations, links, videos and other materials.
+
+Control access by course, student or class.
+
+---
+
+# 13. PAYMENTS, INVOICES AND RECEIPTS
+
+Initially, use manual payments.
+
+Do not require an online payment gateway for the first version.
+
+Support:
+
+- M-Pesa.
+- Bank transfer.
+- Other manually configured payment methods.
+
+### Payment settings
+
+Allow the administrator to configure:
+
+- M-Pesa payment instructions.
+- Paybill or Till details where applicable.
+- Bank name.
+- Account name.
+- Account details.
+- International payment instructions.
+- Supported currencies.
+
+Do not hardcode sensitive or changeable payment details into the website.
+
+### Parent payment workflow
+
+1. Parent views an invoice.
+2. Parent sees payment instructions.
+3. Parent makes payment outside the platform.
+4. Parent submits the amount paid.
+5. Parent selects payment method.
+6. Parent enters transaction reference.
+7. Parent uploads proof of payment if needed.
+8. Payment appears in the admin dashboard as pending verification.
+9. Administrator verifies or rejects payment.
+10. The invoice is updated.
+11. A receipt is generated after verification.
+
+### Payment statuses
+
+- Pending.
+- Submitted.
+- Verified.
+- Rejected.
+- Partially paid.
+- Paid.
+- Refunded.
+
+### Invoice features
+
+Create invoices containing:
+
+- Invoice number.
+- Parent name.
+- Student name.
+- Course or service.
+- Amount.
+- Currency.
+- Issue date.
+- Due date.
+- Payment status.
+- Payment instructions.
+
+Allow the administrator and parent to view and download invoices and receipts.
+
+Track:
+
+- Total revenue.
+- Outstanding payments.
+- Verified payments.
+- Pending verification.
+- Payment history by student.
+- Payment history by parent.
+
+Do not mark a payment as verified merely because a parent submitted a transaction reference.
+
+---
+
+# 14. NOTIFICATIONS AND REMINDERS
+
+Build a notification system.
+
+### Events that should trigger notifications
+
+- New booking.
+- Booking confirmation.
+- Booking rejection.
+- Booking rescheduling.
+- Booking cancellation.
+- Upcoming lesson reminder.
+- New assignment.
+- Assignment due date.
+- Assignment feedback.
+- Lesson notes published.
+- Recording published.
+- Payment submitted.
+- Payment verified.
+- Invoice generated.
+- Teacher message.
+- Parent message.
+
+### Notification channels
+
+Start with email notifications.
+
+Make the email provider configurable.
+
+Support in-app notifications.
+
+Allow notification preferences to be configured.
+
+Where supported, schedule class reminders, for example:
+
+- 24 hours before class.
+- 1 hour before class.
+- 15 minutes before class.
+
+Use reliable scheduled jobs or a supported background-processing service.
+
+Do not claim an email or reminder was sent if the service is not configured or the send operation failed.
+
+---
+
+# 15. STUDENT MANAGEMENT / CRM
+
+Create a student management section.
+
+Each student profile should include:
+
+- Full name.
+- Date of birth or age where necessary.
+- Grade or learning level.
+- Country.
+- Timezone.
+- Parent or guardian.
+- Parent contact information.
+- Enrolled subjects.
+- Enrolment date.
+- Learning goals.
+- Learning preferences.
+- Current status.
+- Teacher.
+- Class history.
+- Attendance.
+- Progress.
+- Assignments.
+- Notes.
+- Payment relationship.
+
+Allow the teacher to add private observations.
+
+Keep private teacher notes separate from information visible to parents or students.
+
+Create search, sorting and filtering.
+
+---
+
+# 16. REPORTS AND ANALYTICS
+
+Create a functional reporting section.
+
+Reports should include:
+
+### Academic reports
+
+- Student progress.
+- Lessons completed.
+- Attendance.
+- Missed classes.
+- Assignment performance.
+- Course completion.
+- Teacher feedback history.
+
+### Business reports
+
+- Total bookings.
+- Confirmed bookings.
+- Cancelled bookings.
+- Completed classes.
+- Revenue.
+- Outstanding balances.
+- Revenue by course.
+- Revenue by month.
+- New student registrations.
+
+Allow filtering by date range, student, subject and teacher.
+
+Allow CSV exports.
+
+Use real database records.
+
+---
+
+# 17. ADMINISTRATOR SETTINGS
+
+Create a complete settings area.
+
+Include:
+
+### Business settings
+- Business name.
+- Logo.
+- Contact information.
+- Website details.
+- Social media links.
+- Business address where required.
+
+### Academic settings
+- Subjects.
+- Grades.
+- Courses.
+- Curriculum.
+- Lesson durations.
+- Pricing.
+- Course visibility.
+
+### Scheduling settings
+- Working hours.
+- Availability.
+- Timezone.
+- Booking notice.
+- Buffer time.
+- Cancellation policy.
+
+### Integration settings
+- Supabase connection status.
+- Zoom connection.
+- Google Calendar connection.
+- Gemini API status.
+- Email provider status.
+- Recording configuration.
+
+### Payment settings
+- Supported currencies.
+- M-Pesa details.
+- Bank details.
+- Payment instructions.
+
+### Privacy and recording settings
+- Recording consent.
+- Parent consent.
+- Data access rules.
+- Retention settings.
+- Account management.
+
+All settings that are intended to be editable should be stored and managed appropriately rather than hardcoded.
+
+---
+
+# 18. DATABASE ARCHITECTURE
+
+Design a properly relational PostgreSQL database using Supabase.
+
+Create migrations and document the schema.
+
+At minimum, include tables for:
+
+1. profiles.
+2. parents.
+3. students.
+4. parent_students.
+5. teachers.
+6. courses.
+7. curriculum_modules.
+8. curriculum_lessons.
+9. enrolments.
+10. teacher_availability.
+11. bookings.
+12. classes.
+13. class_participants.
+14. video_meetings.
+15. recordings.
+16. lesson_notes.
+17. lesson_note_versions.
+18. assignments.
+19. assignment_submissions.
+20. resources.
+21. payments.
+22. invoices.
+23. invoice_items.
+24. notifications.
+25. messages.
+26. testimonials.
+27. website_content.
+28. integration_settings.
+29. recording_consents.
+30. audit_logs.
+
+Use:
+
+- UUID primary keys.
+- Foreign key relationships.
+- Appropriate indexes.
+- Created and updated timestamps.
+- Clear status fields.
+- Constraints where appropriate.
+- Database transactions for critical workflows.
+
+Ensure the data model supports multiple teachers and multiple children per parent.
+
+Use database migrations rather than relying on manually created tables.
+
+---
+
+# 19. SECURITY, PRIVACY AND CHILD SAFETY
+
+This is an educational platform serving minors, so security is essential.
+
+Implement:
+
+- Supabase Row Level Security on all relevant tables.
+- Server-side validation.
+- Secure authentication.
+- Role-based permissions.
+- Protected admin routes.
+- Protected parent routes.
+- Protected student routes.
+- Secure file storage.
+- Signed URLs or equivalent access-controlled file delivery.
+- Secure handling of API keys.
+- Audit logs for important administrative actions.
+- Appropriate session management.
+- Protection against unauthorised access to recordings and notes.
+
+A parent must only access their own children.
+
+A student must only access their own learning records.
+
+A teacher must only access records permitted by their role.
+
+Private teacher notes must never appear in the student or parent portal.
+
+Implement appropriate parental consent for children, especially before recording lessons.
+
+Design the platform with applicable data protection requirements in mind, including Kenya's Data Protection Act and relevant privacy obligations for international users.
+
+Collect only information necessary to deliver the service.
+
+---
+
+# 20. USER EXPERIENCE AND FUNCTIONALITY REQUIREMENTS
+
+The platform must be easy to use for parents, teachers and children.
+
+### Navigation
+
+- Clear navigation.
+- Working buttons.
+- Working forms.
+- Loading states.
+- Success messages.
+- Error messages.
+- Empty states.
+- Confirmation dialogs for destructive actions.
+- Responsive sidebars.
+- Mobile-friendly navigation.
+
+### Data handling
+
+- Use real Supabase data.
+- Implement proper loading and error handling.
+- Validate forms on the client and server.
+- Prevent duplicate submissions.
+- Show clear feedback after actions.
+- Handle missing records gracefully.
+- Ensure all dashboard data updates when records change.
+
+### Important interaction rules
+
+Do not build buttons that merely look functional.
+
+For example:
+
+- Join Class must open the correct meeting.
+- Review Lesson must open the correct completed class.
+- Reschedule must update the database and calendar.
+- Cancel must update the booking and handle the associated meeting.
+- Publish Notes must make the notes visible to the correct student and parent.
+- Submit Payment must create a pending payment record.
+- Verify Payment must update the payment and invoice.
+- Submit Assignment must save the actual submission.
+- Add Student must create a real student profile.
+- Create Course must save a real course.
+
+Every action must have a working backend operation and appropriate permission checks.
+
+---
+
+# 21. REQUIRED END-TO-END WORKFLOWS
+
+These workflows are critical. Build and test them completely.
+
+## Workflow A: New student enrolment
+
+1. Parent visits the website.
+2. Parent creates an account.
+3. Parent adds a child.
+4. Parent selects a subject.
+5. Parent chooses a course.
+6. Parent books an available time.
+7. Booking is saved in Supabase.
+8. Administrator receives the booking.
+9. Administrator confirms the booking.
+10. Parent receives confirmation.
+11. Class appears in the teacher and student calendars.
+
+## Workflow B: Class scheduling and video meeting
+
+1. Administrator opens the calendar.
+2. Administrator creates or confirms a class.
+3. System creates the appropriate Zoom or Google Meet meeting.
+4. Meeting details are saved against that class.
+5. Student dashboard displays the upcoming class.
+6. Parent dashboard displays the upcoming class.
+7. Student clicks Join Class.
+8. The correct meeting opens.
+9. Teacher joins the same meeting.
+
+## Workflow C: After-class recording
+
+1. Class ends.
+2. Recording becomes available from the video provider, if supported.
+3. System retrieves recording metadata.
+4. Recording is linked to the correct class.
+5. Teacher sees the recording in the admin dashboard.
+6. Teacher reviews it.
+7. Teacher publishes it.
+8. Student sees it in the completed lesson page.
+9. Parent can access it through the child's dashboard.
+
+## Workflow D: AI lesson summary
+
+1. Teacher opens a completed class.
+2. Teacher retrieves or uploads a transcript.
+3. Teacher selects Generate Lesson Summary.
+4. Gemini generates a structured draft.
+5. Draft is saved.
+6. Teacher edits the draft.
+7. Teacher approves and publishes it.
+8. Student sees the lesson notes.
+9. Parent sees the same published notes.
+10. Private teacher observations remain private.
+
+## Workflow E: Assignment
+
+1. Teacher creates an assignment.
+2. Teacher assigns it to a student.
+3. Student receives a notification.
+4. Student opens the assignment.
+5. Student uploads or enters their answer.
+6. Submission is saved.
+7. Teacher reviews it.
+8. Teacher provides marks and feedback.
+9. Student and parent can see the published feedback.
+
+## Workflow F: Payment
+
+1. Parent opens an invoice.
+2. Parent views payment instructions.
+3. Parent submits a payment reference and proof.
+4. Payment appears as pending verification.
+5. Administrator checks the payment.
+6. Administrator verifies or rejects it.
+7. Invoice status updates.
+8. Parent can access the receipt.
+
+---
+
+# 22. TESTING AND ACCEPTANCE CRITERIA
+
+Do not consider the project complete simply because the pages render.
+
+Create tests for authentication, permissions, database operations, booking, scheduling, integrations and the main user workflows.
+
+At minimum, verify:
+
+- Parent registration and login.
+- Student access.
+- Admin access.
+- Role-based restrictions.
+- Adding a student.
+- Creating a course.
+- Booking a class.
+- Preventing double booking.
+- Displaying the correct timezone.
+- Creating a calendar event.
+- Creating a real video meeting when credentials are configured.
+- Opening the correct Join Class link.
+- Completing a class.
+- Attaching a recording.
+- Generating an AI summary when Gemini is configured.
+- Editing and publishing notes.
+- Accessing published notes as a student.
+- Submitting an assignment.
+- Reviewing an assignment.
+- Submitting a payment.
+- Verifying a payment.
+- Generating an invoice or receipt.
+- Restricting access to other students' records.
+- Protecting private teacher notes.
+
+Create a clear test account setup process.
+
+Use test data only in development. Never mix demonstration data with real customer data.
+
+---
+
+# 23. DEVELOPMENT AND IMPLEMENTATION APPROACH
+
+Build this as a complete application, but work in properly tested stages.
+
+Do not attempt to generate a huge amount of disconnected code in one response.
+
+First inspect the existing project and preserve any useful working code.
+
+Then follow these phases:
+
+### Phase 1 — Foundation
+- Project structure.
+- Database configuration.
+- Authentication.
+- Roles and permissions.
+- Public website.
+- Courses.
+- Curriculum.
+- Booking system.
+
+### Phase 2 — Admin and student management
+- Admin dashboard.
+- Parent dashboard.
+- Student dashboard.
+- Student profiles.
+- Parent-child relationships.
+- Course enrolment.
+
+### Phase 3 — Scheduling
+- Calendar.
+- Availability.
+- Class creation.
+- Rescheduling.
+- Recurring lessons.
+- Timezone handling.
+- Booking conflict prevention.
+
+### Phase 4 — Video conferencing
+- Zoom integration.
+- Google Meet integration.
+- Meeting creation.
+- Join links.
+- Meeting status.
+- Integration settings.
+
+### Phase 5 — Recordings and lesson notes
+- Recording retrieval.
+- Manual recording uploads.
+- Transcript handling.
+- Gemini summaries.
+- Editable notes.
+- Publishing workflow.
+- Student lesson review pages.
+
+### Phase 6 — Assignments and payments
+- Assignment creation.
+- Student submissions.
+- Teacher marking.
+- Manual payment submission.
+- Payment verification.
+- Invoices.
+- Receipts.
+
+### Phase 7 — Notifications and reporting
+- Email notifications.
+- In-app notifications.
+- Reminders.
+- Academic reports.
+- Financial reports.
+- CSV exports.
+
+### Phase 8 — Quality assurance and deployment
+- Security checks.
+- RLS verification.
+- Integration testing.
+- Mobile testing.
+- Error handling.
+- Production configuration.
+- Vercel deployment.
+- Final documentation.
+
+After each phase:
+
+1. Check that the application runs.
+2. Check for TypeScript errors.
+3. Check for build errors.
+4. Test the implemented features.
+5. Fix broken functionality before proceeding.
+6. Update the README.
+7. Explain which features are genuinely working and which still require external credentials.
+
+---
+
+# 24. PROJECT DELIVERY REQUIREMENTS
+
+I expect an actual working source-code project.
+
+Deliver:
+
+- Complete Next.js application.
+- Responsive frontend.
+- Functional backend.
+- Supabase SQL migrations.
+- Authentication and access control.
+- Working dashboard pages.
+- Working forms and actions.
+- API routes.
+- Integration services.
+- Environment variable example file.
+- README with installation instructions.
+- Database setup instructions.
+- Integration setup instructions.
+- Deployment instructions.
+- Testing instructions.
+
+The project must be easy to run locally and deploy.
+
+Do not put all the code into one enormous component. Use a clean, organised, maintainable folder structure.
+
+Create reusable components and separate business logic from UI code.
+
+Do not leave important features as TODO comments while claiming the application is complete.
+
+If an external service requires credentials, build the integration properly, provide the required configuration instructions and clearly identify what cannot be tested until credentials are supplied.
+
+---
+
+# 25. FINAL NON-NEGOTIABLE INSTRUCTIONS
+
+1. **Prioritise functionality over appearance.**
+2. Build real database-backed features, not static mockups.
+3. Do not use fake booking records, fake payments or fake meeting links.
+4. Do not create buttons without working actions.
+5. Do not expose secret keys in frontend code.
+6. Do not publish AI lesson notes without teacher approval.
+7. Do not allow parents or students to access another learner's private information.
+8. Give every class its own identifiable record and associated meeting, attendance, recording, notes and assignments.
+9. Make the Join Class and Review Lesson experiences reliable and straightforward.
+10. Make the platform work for international students across different timezones.
+11. Make it possible to add more teachers without redesigning the database.
+12. Make it possible to change prices, courses, curriculum, payment details and availability from the admin dashboard.
+13. Handle missing integrations honestly and gracefully.
+14. Test the entire journey from parent registration to booking, attending a class, publishing notes and recording, submitting homework and tracking payment.
+15. Do not declare the platform finished until the core end-to-end workflows have been tested.
+
+**THE MOST IMPORTANT USER EXPERIENCE:**
+
+When I log in as the teacher, I should immediately see my next classes, students, calendar and outstanding tasks.
+
+When a student logs in, they should immediately see their next lesson and a working Join Class button. After the lesson, they should see a Review Lesson button leading to that exact session, with its published notes, recording, homework and resources.
+
+When a parent logs in, they should be able to see their children's schedules, learning progress, lesson notes, recordings, assignments and payment information.
+
+I want Jey Learning Hub to become a complete online tutoring business management platform that I can genuinely use to run my teaching business, not simply a website that advertises my services.
+
+**Start by examining the existing project, identifying what is already implemented, and producing a clear implementation plan. Then begin building and testing the actual application phase by phase.**

@@ -1,0 +1,6 @@
+{
+  "name": "Jey Learning Hub",
+  "description": "Online tutoring platform for Mathematics and Coding & Computer Science — Learn with Jecinta. Learn. Create. Grow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
